@@ -275,7 +275,32 @@ require('lazy').setup({
       vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
     end,
   },
-
+  {
+    'akinsho/toggleterm.nvim',
+    version = '*',
+    config = function()
+      require('toggleterm').setup {
+        size = 20,
+        direction = 'float',
+        float_opts = {
+          border = 'curved',
+          winblend = 0,
+          highlights = {
+            border = 'Normal',
+            background = 'Normal',
+          },
+        },
+        open_mapping = [[<c-\>]],
+        hide_numbers = true,
+        shade_terminals = true,
+        shade_filetypes = {},
+        shading_factor = 2,
+        insert_mappings = true,
+        close_on_exit = true,
+      }
+    end,
+  },
+  -- Kickstart plugins
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
   -- Here is a more advanced example where we pass configuration

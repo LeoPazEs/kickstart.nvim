@@ -300,6 +300,10 @@ require('lazy').setup({
       }
     end,
   },
+  {
+    'tpope/vim-fugitive',
+    config = function() end,
+  },
   -- Kickstart plugins
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },

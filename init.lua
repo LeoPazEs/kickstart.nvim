@@ -290,7 +290,7 @@ require('lazy').setup({
             background = 'Normal',
           },
         },
-        open_mapping = [[<c-\>]],
+        open_mapping = [[<c-t>]],
         hide_numbers = true,
         shade_terminals = true,
         shade_filetypes = {},
@@ -724,7 +724,7 @@ require('lazy').setup({
         function()
           require('conform').format { async = true, lsp_fallback = true }
         end,
-        mode = '',
+        mode = 'n',
         desc = '[F]ormat buffer',
       },
     },

@@ -630,6 +630,29 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         pyright = {},
+        pylsp = {
+          settings = {
+            pylsp = {
+              configurationSources = { 'flake8' },
+              plugins = {
+                flake8 = {
+                  enabled = true,
+                  ignore = {},
+                  maxLineLength = 88,
+                },
+                black = { enabled = false },
+                autopep8 = { enabled = false },
+                mccabe = { enabled = false },
+                pycodestyle = {
+                  enabled = false,
+                  ignore = { 'E501', 'E231' },
+                  maxLineLength = 88,
+                },
+                pyflakes = { enabled = false },
+              },
+            },
+          },
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -671,6 +694,7 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'pyright', -- Used to type check Python code
         'flake8', -- Used to enforce style consistency Python code
+        'python-lsp-server', -- LSP for flake8
         'black', -- Used to format Python Code
         'isort', -- Used to format imports Python Code
       })

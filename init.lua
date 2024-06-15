@@ -290,7 +290,7 @@ require('lazy').setup({
             background = 'Normal',
           },
         },
-        open_mapping = [[<c-t>]],
+        open_mapping = [[<c-\>]],
         hide_numbers = true,
         shade_terminals = true,
         shade_filetypes = {},

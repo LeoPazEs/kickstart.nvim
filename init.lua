@@ -309,6 +309,7 @@ require('lazy').setup({
   -- Transparent Neovim
   {
     'xiyaowong/transparent.nvim',
+    lazy = false,
     config = function()
       require('transparent').setup {
         groups = {

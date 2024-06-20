@@ -275,6 +275,7 @@ require('lazy').setup({
       vim.api.nvim_set_keymap('n', '<c-e>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
     end,
   },
+  -- Terminal in Neovim
   {
     'akinsho/toggleterm.nvim',
     version = '*',
@@ -300,9 +301,50 @@ require('lazy').setup({
       }
     end,
   },
+  -- Git in Neovim
   {
     'tpope/vim-fugitive',
     config = function() end,
+  },
+  -- Transparent Neovim
+  {
+    'xiyaowong/transparent.nvim',
+    config = function()
+      require('transparent').setup {
+        groups = {
+          'Normal',
+          'NormalNC',
+          'Comment',
+          'Constant',
+          'Special',
+          'Identifier',
+          'Statement',
+          'PreProc',
+          'Type',
+          'Underlined',
+          'Todo',
+          'String',
+          'Function',
+          'Conditional',
+          'Repeat',
+          'Operator',
+          'Structure',
+          'LineNr',
+          'NonText',
+          'SignColumn',
+          'CursorLine',
+          'CursorLineNr',
+          'StatusLine',
+          'StatusLineNC',
+          'EndOfBuffer',
+        },
+        extra_groups = {
+          'NormalFloat',
+          'NvimTreeNormal',
+        },
+        exclude_groups = {},
+      }
+    end,
   },
   -- Kickstart plugins
   -- "gc" to comment visual regions/lines

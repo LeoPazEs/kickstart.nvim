@@ -241,7 +241,7 @@ require('lazy').setup({
   {
     'nvim-tree/nvim-tree.lua',
     version = '*',
-    lazy = false,
+    lazy = true,
     dependencies = {
       'nvim-tree/nvim-web-devicons',
       enabled = vim.g.have_nerd_font,
@@ -270,6 +270,11 @@ require('lazy').setup({
           width = 30,
           side = 'left',
         },
+        git = {
+          enable = true,
+          ignore = false,
+          timeout = 500,
+        },
       }
       -- Map keys to open nvim-tree
       vim.api.nvim_set_keymap('n', '<c-e>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
@@ -296,7 +301,6 @@ require('lazy').setup({
         shade_terminals = true,
         shade_filetypes = {},
         shading_factor = 2,
-        insert_mappings = true,
         close_on_exit = true,
       }
     end,
@@ -338,10 +342,12 @@ require('lazy').setup({
           'StatusLine',
           'StatusLineNC',
           'EndOfBuffer',
+          'NvimTreeNormalNC',
         },
         extra_groups = {
           'NormalFloat',
           'NvimTreeNormal',
+          'NvimTreeNormalNC',
         },
         exclude_groups = {},
       }

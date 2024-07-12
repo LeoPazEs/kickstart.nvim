@@ -353,6 +353,54 @@ require('lazy').setup({
       }
     end,
   },
+  {
+    'mfussenegger/nvim-dap',
+    config = function()
+      local dap = require 'dap'
+      dap.set_log_level 'DEBUG'
+      vim.keymap.set('n', '<F1>', dap.continue, { desc = 'Continue debugger' })
+      vim.keymap.set('n', '<F2>', dap.step_into, { desc = 'Step into debugger' })
+      vim.keymap.set('n', '<F3>', dap.step_over, { desc = 'Step over debugger' })
+      vim.keymap.set('n', '<F4>', dap.step_out, { desc = 'Step out debugger' })
+      vim.keymap.set('n', '<F5>', dap.step_back, { desc = 'Step back debugger' })
+      vim.keymap.set('n', '<F13>', dap.restart, { desc = 'Restart debugger' })
+      vim.keymap.set('n', '<Leader>b', function()
+        dap.toggle_breakpoint()
+      end, { desc = 'Toggle breakpoint debugger' })
+    end,
+  },
+  {
+    'mfussenegger/nvim-dap-python',
+    config = function()
+      local path = '~/.local/share/nvim/mason/packages/debugpy/venv/bin/python'
+      require('dap-python').setup(path)
+    end,
+    dependencies = {
+      'mfussenegger/nvim-dap',
+      'rcarriga/nvim-dap-ui',
+    },
+  },
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+    config = function()
+      local ui = require 'dapui'
+      local dap = require 'dap'
+      ui.setup()
+      dap.listeners.before.attach.dapui_config = function()
+        ui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        ui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        ui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        ui.close()
+      end
+    end,
+  },
   -- Kickstart plugins
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -537,7 +585,13 @@ require('lazy').setup({
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+      {
+        'folke/neodev.nvim',
+        opts = {},
+        config = function()
+          require('neodev').setup { library = { plugins = { 'nvim-dap-ui' }, types = true } }
+        end,
+      },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -750,6 +804,7 @@ require('lazy').setup({
         'python-lsp-server', -- LSP for flake8
         'black', -- Used to format Python Code
         'isort', -- Used to format imports Python Code
+        'debugpy', -- Userd to debug Python Code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

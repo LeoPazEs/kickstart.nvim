@@ -167,6 +167,7 @@ return { -- LSP Configuration & Plugins
       'python-lsp-server', -- LSP for flake8
       'black', -- Used to format Python Code
       'isort', -- Used to format imports Python Code
+      'yq', -- Used to format YAML and YML files
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

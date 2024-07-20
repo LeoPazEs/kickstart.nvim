@@ -12,5 +12,7 @@ return {
     vim.keymap.set('n', '<leader>B', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
+    vim.fn.sign_define('DapBreakpoint', { text = '🚦', texthl = '', linehl = '', numhl = '' })
+    vim.fn.sign_define('DapStopped', { text = '📍', texthl = '', linehl = '', numhl = '' })
   end,
 }

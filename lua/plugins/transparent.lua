@@ -30,10 +30,9 @@ return {
         'StatusLineNC',
         'EndOfBuffer',
       },
-      extra_groups = {},
+      extra_groups = { 'NormalFloat' },
       exclude_groups = {},
     }
     require('transparent').clear_prefix 'NvimTree'
-    require('transparent').clear_prefix 'Telescope'
   end,
 }

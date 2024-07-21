@@ -116,16 +116,20 @@ return { -- LSP Configuration & Plugins
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
+      gopls = { settings = { gopls = { completeUnimported = true, usePlaceholders = true, analyses = { unusedparams = true } } } },
+
       pylsp = {
         settings = {
           pylsp = {
-            configurationSources = { 'flake8' },
+            configurationSources = { 'flake8', 'pyls_mypy' },
             plugins = {
               flake8 = {
                 enabled = true,
                 ignore = {},
                 maxLineLength = 88,
               },
+              -- type checker
+              pyls_mypy = { enabled = true },
               black = { enabled = false },
               autopep8 = { enabled = false },
               mccabe = { enabled = false },
@@ -162,12 +166,20 @@ return { -- LSP Configuration & Plugins
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
+      -- Golang
+      'gopls', -- LSP for Golang Code
+      'gofumpt', -- Formatter for Golang Code
+      'goimports', -- Formatter for Golang Code imports
+      'golines', -- Formatter for longlines in Golang Code
+      -- Lua
       'stylua', -- Used to format Lua code
+      -- Python
       'flake8', -- Used to enforce style consistency Python code
       'python-lsp-server', -- LSP for flake8
       'black', -- Used to format Python Code
       'isort', -- Used to format imports Python Code
       'yq', -- Used to format YAML and YML files
+      -- pylsp-mypy is Managed by the :PylspInstall , -- Type Checking for Python code
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -27,6 +27,7 @@ return { -- Autoformat
       lua = { 'stylua' },
       yaml = { 'yq' },
       yml = { 'yq' },
+      go = { 'gofumpt', 'goimports', 'golines' },
       -- Conform can also run multiple formatters sequentially
       python = { 'isort', 'black' },
       --

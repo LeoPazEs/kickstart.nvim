@@ -116,7 +116,7 @@ return { -- LSP Configuration & Plugins
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 
-    local function extra_args() -- fing virtualenv for mypy
+    local function extra_args() -- finding virtualenv for mypy
       local virtual = os.getenv 'VIRTUAL_ENV' or '/usr'
       return { '--python-executable', virtual .. '/bin/python3', true }
     end
@@ -132,17 +132,17 @@ return { -- LSP Configuration & Plugins
               flake8 = {
                 enabled = true,
                 ignore = {},
-                maxLineLength = 88,
+                maxLineLength = 50,
               },
+              pylsp_mypy = { enabled = true, overrides = extra_args(), live_mode = true },
               -- type checker
-              mypy = { enabled = true, overrides = extra_args() },
               black = { enabled = false },
               autopep8 = { enabled = false },
               mccabe = { enabled = false },
               pycodestyle = {
                 enabled = false,
                 ignore = { 'E501', 'E231' },
-                maxLineLength = 88,
+                maxLineLength = 10,
               },
               pyflakes = { enabled = false },
             },
@@ -177,12 +177,10 @@ return { -- LSP Configuration & Plugins
       'gofumpt', -- Formatter for Golang Code
       'goimports', -- Formatter for Golang Code imports
       'golines', -- Formatter for longlines in Golang Code
+      'python-lsp-server', -- LSP for flake8
       -- Lua
       'stylua', -- Used to format Lua code
       -- Python
-      'flake8', -- Used to enforce style consistency Python code
-      'python-lsp-server', -- LSP for flake8
-      'black', -- Used to format Python Code
       'isort', -- Used to format imports Python Code
       'yq', -- Used to format YAML and YML files
       -- pylsp-mypy is Managed by the :PylspInstall , -- Type Checking for Python code

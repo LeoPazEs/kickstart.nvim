@@ -115,13 +115,19 @@ return { -- LSP Configuration & Plugins
     --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
     --  - settings (table): Override the default settings passed when initializing the server.
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
+    local function extra_args() -- fing virtualenv for mypy
+      local virtual = os.getenv 'VIRTUAL_ENV' or '/usr'
+      return { '--python-executable', virtual .. '/bin/python3', true }
+    end
+
     local servers = {
       gopls = { settings = { gopls = { completeUnimported = true, usePlaceholders = true, analyses = { unusedparams = true } } } },
 
       pylsp = {
         settings = {
           pylsp = {
-            configurationSources = { 'flake8', 'pyls_mypy' },
+            configurationSources = { 'flake8' },
             plugins = {
               flake8 = {
                 enabled = true,
@@ -129,7 +135,7 @@ return { -- LSP Configuration & Plugins
                 maxLineLength = 88,
               },
               -- type checker
-              pyls_mypy = { enabled = true },
+              mypy = { enabled = true, overrides = extra_args() },
               black = { enabled = false },
               autopep8 = { enabled = false },
               mccabe = { enabled = false },

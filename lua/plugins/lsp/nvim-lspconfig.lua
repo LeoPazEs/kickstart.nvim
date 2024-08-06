@@ -132,7 +132,7 @@ return { -- LSP Configuration & Plugins
               flake8 = {
                 enabled = true,
                 ignore = {},
-                maxLineLength = 50,
+                maxLineLength = 88,
               },
               pylsp_mypy = { enabled = true, overrides = extra_args(), live_mode = true },
               -- type checker

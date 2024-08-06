@@ -16,7 +16,6 @@ return {
       type = 'python',
       request = 'attach',
       name = 'Attach remote (with path mapping)',
-      mode = 'remote',
       connect = function()
         local host = vim.fn.input 'Host [127.0.0.1]: '
         host = host ~= '' and host or '127.0.0.1'

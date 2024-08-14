@@ -135,16 +135,12 @@ return { -- LSP Configuration & Plugins
                 ignore = {},
                 maxLineLength = 88,
               },
-              pylsp_mypy = { enabled = true, overrides = extra_args(), live_mode = true },
+              pylsp_mypy = { enabled = true, overrides = extra_args(), live_mode = true, report_progress = true },
               -- type checker
               black = { enabled = false },
               autopep8 = { enabled = false },
               mccabe = { enabled = false },
-              pycodestyle = {
-                enabled = false,
-                ignore = { 'E501', 'E231' },
-                maxLineLength = 10,
-              },
+              pycodestyle = { enabled = false },
               pyflakes = { enabled = false },
             },
           },
@@ -178,13 +174,14 @@ return { -- LSP Configuration & Plugins
       'gofumpt', -- Formatter for Golang Code
       'goimports', -- Formatter for Golang Code imports
       'golines', -- Formatter for longlines in Golang Code
-      'python-lsp-server', -- LSP for flake8
       -- Lua
       'stylua', -- Used to format Lua code
       -- Python
       'isort', -- Used to format imports Python Code
-      'yq', -- Used to format YAML and YML files
+      'python-lsp-server', -- LSP for flake8
       -- pylsp-mypy is Managed by the :PylspInstall , -- Type Checking for Python code
+      -- YAML
+      'yq', -- Used to format YAML and YML files
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

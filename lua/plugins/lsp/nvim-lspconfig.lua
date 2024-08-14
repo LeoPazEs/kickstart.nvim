@@ -1,5 +1,6 @@
 return { -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
+  lazy = false,
   dependencies = {
     'williamboman/mason.nvim', -- NOTE: Must be loaded before dependants
     'williamboman/mason-lspconfig.nvim',

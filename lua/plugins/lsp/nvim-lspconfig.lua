@@ -119,7 +119,7 @@ return { -- LSP Configuration & Plugins
 
     local function extra_args() -- finding virtualenv for mypy
       local virtual = os.getenv 'VIRTUAL_ENV' or '/usr'
-      return { '--python-executable', virtual .. '/bin/python3', true }
+      return { '--python-executable', virtual .. '/bin/python3', true, '--cache-fine-grained' }
     end
 
     local servers = {
@@ -135,7 +135,7 @@ return { -- LSP Configuration & Plugins
                 ignore = {},
                 maxLineLength = 88,
               },
-              pylsp_mypy = { enabled = true, overrides = extra_args(), live_mode = true, report_progress = true },
+              pylsp_mypy = { enabled = true, overrides = extra_args(), report_progress = true, live_mode = true, follow_imports = 'normal' },
               -- type checker
               black = { enabled = false },
               autopep8 = { enabled = false },

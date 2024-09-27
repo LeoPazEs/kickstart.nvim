@@ -135,7 +135,7 @@ return { -- LSP Configuration & Plugins
                 ignore = {},
                 maxLineLength = 88,
               },
-              pylsp_mypy = { enabled = true, overrides = extra_args(), report_progress = true, live_mode = true, follow_imports = 'normal' },
+              pylsp_mypy = { enabled = true, overrides = extra_args(), report_progress = true, dmypy = true, follow_imports = 'normal' },
               -- type checker
               black = { enabled = false },
               autopep8 = { enabled = false },

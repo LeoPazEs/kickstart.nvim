@@ -178,6 +178,7 @@ return { -- LSP Configuration & Plugins
       -- Lua
       'stylua', -- Used to format Lua code
       -- Python
+      'black',
       'isort', -- Used to format imports Python Code
       'python-lsp-server', -- LSP for flake8
       -- pylsp-mypy is Managed by the :PylspInstall , -- Type Checking for Python code

@@ -172,7 +172,6 @@ return { -- LSP Configuration & Plugins
     vim.list_extend(ensure_installed, {
       -- C, C++
       'clangd',
-      'clang-format',
       -- Golang
       'gopls', -- LSP for Golang Code
       'gofumpt', -- Formatter for Golang Code

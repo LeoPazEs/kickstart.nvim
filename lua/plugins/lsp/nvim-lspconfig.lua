@@ -124,7 +124,7 @@ return { -- LSP Configuration & Plugins
 
     local servers = {
       gopls = { settings = { gopls = { completeUnimported = true, usePlaceholders = true, analyses = { unusedparams = true } } } },
-
+      clangd = {},
       pylsp = {
         settings = {
           pylsp = {
@@ -136,7 +136,7 @@ return { -- LSP Configuration & Plugins
                 maxLineLength = 88,
               },
               -- pylsp_mypy = { enabled = true, overrides = extra_args(), report_progress = true, dmypy = true, follow_imports = 'normal', live_mode = false },
-              pylsp_mypy = { enabled = true, overrides = extra_args(), report_progress = true, follow_imports = 'normal', live_mode = true },
+              pylsp_mypy = { enabled = true, overrides = extra_args(), report_progress = true, follow_imports = 'normal', live_mode = false },
               -- type checker
               black = { enabled = false },
               autopep8 = { enabled = false },
@@ -170,6 +170,8 @@ return { -- LSP Configuration & Plugins
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
+      -- C, C++
+      'clangd',
       -- Golang
       'gopls', -- LSP for Golang Code
       'gofumpt', -- Formatter for Golang Code
@@ -178,6 +180,7 @@ return { -- LSP Configuration & Plugins
       -- Lua
       'stylua', -- Used to format Lua code
       -- Python
+      'black',
       'isort', -- Used to format imports Python Code
       'python-lsp-server', -- LSP for flake8
       -- pylsp-mypy is Managed by the :PylspInstall , -- Type Checking for Python code

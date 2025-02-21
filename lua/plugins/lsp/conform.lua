@@ -1,7 +1,6 @@
 return { -- Autoformat
   'stevearc/conform.nvim',
   lazy = false,
-  branch = 'nvim-0.9',
   keys = {
     {
       '<leader>f',
@@ -31,6 +30,7 @@ return { -- Autoformat
       yaml = { 'yq' },
       yml = { 'yq' },
       go = { 'gofumpt', 'goimports', 'golines' },
+      cucumber = { 'reformat-gherkin' },
       -- Conform can also run multiple formatters sequentially
       python = { 'isort', 'black' },
       --

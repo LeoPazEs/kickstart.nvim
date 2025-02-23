@@ -25,8 +25,8 @@ return { -- Autoformat
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      c = { 'clangd' },
-      cpp = { 'clangd' },
+      -- c = { 'clangd' },
+      -- cpp = { 'clangd' },
       yaml = { 'yq' },
       yml = { 'yq' },
       go = { 'gofumpt', 'goimports', 'golines' },

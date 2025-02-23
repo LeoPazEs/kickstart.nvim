@@ -187,9 +187,6 @@ return { -- LSP Configuration & Plugins
       -- pylsp-mypy is Managed by the :PylspInstall , -- Type Checking for Python code
       -- YAML
       'yq', -- Used to format YAML and YML files
-      -- Cucumber
-      'cucumber_language_server',
-      'reformat-gherkin',
     })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

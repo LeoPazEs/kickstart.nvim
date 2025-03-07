@@ -8,15 +8,7 @@ return {
         -- See https://github.com/leoluz/nvim-dap-go/blob/main/README.md#configuring
         detached = vim.fn.has 'win32' == 0,
       },
-      dap_configurations = {
-        {
-          type = 'go',
-          name = 'Debug Package (Arguments)',
-          request = 'launch',
-          program = '${fileDirname}',
-          args = require('dap-go').get_arguments,
-        },
-      },
+      dap_configurations = {},
     }
   end,
 }

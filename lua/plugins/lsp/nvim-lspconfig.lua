@@ -123,7 +123,6 @@ return { -- LSP Configuration & Plugins
     end
 
     local servers = {
-      cucumber_language_server = {},
       gopls = { settings = { gopls = { completeUnimported = true, usePlaceholders = true, analyses = { unusedparams = true } } } },
       clangd = {},
       pylsp = {

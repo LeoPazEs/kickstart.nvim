@@ -6,7 +6,7 @@ return {
     local debugpy = mason_registry.get_package 'debugpy'
     local debugpy_path = debugpy:get_install_path() .. '/venv/bin/python'
 
-    require('dap-python').setup(debugpy_path)
+    require('dap-python').setup(debugpy_path, { include_configs = false })
     vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua require("dap-python").test_method()<CR>', { noremap = true, silent = true })
     vim.api.nvim_set_keymap('n', '<leader>df', '<cmd>lua require("dap-python").test_class()<CR>', { noremap = true, silent = true })
     vim.api.nvim_set_keymap('v', '<leader>ds', '<ESC><cmd>lua require("dap-python").debug_selection()<CR>', { noremap = true, silent = true })
@@ -15,7 +15,7 @@ return {
     table.insert(dap.configurations.python, {
       type = 'python',
       request = 'attach',
-      name = 'Attach remote (with path mapping)',
+      name = 'Python: Attach remote (with path mapping)',
       connect = function()
         local host = vim.fn.input 'Host [127.0.0.1]: '
         host = host ~= '' and host or '127.0.0.1'
